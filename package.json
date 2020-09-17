@@ -1,7 +1,7 @@
 {
-  "name": "react-node",
+  "name": "react-page",
   "version": "2.0.0",
-  "description": "",
+  "description": "不知道写啥，抠脚就对了，如果能看就将就看，看不下去还是扔垃圾箱吧，免得影响心情",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./serve/www.js",
@@ -12,8 +12,16 @@
     "serve-watch": "webpack --config webpack.server.config.js --watch",
     "serve": "nodemon ./serve/build/serve.bundle.js"
   },
-  "keywords": [],
-  "author": "dotili",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanxiaolazy/react-page.git"
+  },
+  "keywords": [
+    "react-node",
+    "react-router",
+    "webpack"
+  ],
+  "author": "yanxiaolazy",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.6",
