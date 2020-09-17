@@ -13,10 +13,4 @@ module.exports = merge(baseConfig, {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, './app/dist')
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './app/views/index.html',
-      title: 'Client App'
-    })
-  ],
 });

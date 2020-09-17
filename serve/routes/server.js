@@ -7,12 +7,11 @@ const {Client} = require('../../app/views');
 
 const router = new Router();
 
-// router.redirect('/', '/user');
-router.get('/', async (ctx, next) => {
+router.get(/./, async (ctx, next) => {
   const domContent = renderToString(
-  // <React.Fragment>
+  <React.Fragment>
     <Client />
-  // </React.Fragment>
+  </React.Fragment>
   );
 
   const html = `
