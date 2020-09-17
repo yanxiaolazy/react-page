@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Client} from './index';
+import {BrowserRouter} from 'react-router-dom';
+import {Routes} from './routes';
+
+function App() {
+  return(
+    <BrowserRouter>
+      <Routes/>
+    </BrowserRouter>
+  )
+}
 
 ReactDOM.hydrate(
-  // <React.Fragment>
-    <Client />,
-  // </React.Fragment>,
+  <App/>,
   document.getElementById('root')
 );
