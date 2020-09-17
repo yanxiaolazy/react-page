@@ -11,5 +11,5 @@ module.exports = merge(baseConfig, {
     filename: 'serve.bundle.js',
     path: path.resolve(__dirname, './serve/build')
   },
-  externals: [WebpackNodeExternals()],
+  externals: [WebpackNodeExternals()]
 });
