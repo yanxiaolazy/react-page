@@ -13,7 +13,7 @@ export default () => {
       <br/>
       <p>click this button {count} !</p>
       <button onClick={() => setCount(c => c + 1)} >click me</button>
-      <Link to='/news'>news page</Link>
+      <p><Link to='/news'>news page</Link></p>
     </div>
   );
 }
