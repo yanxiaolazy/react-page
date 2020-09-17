@@ -1,29 +1,38 @@
 {
-  "name": "node",
-  "version": "1.0.0",
+  "name": "react-node",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server/www.js",
-    "build": "webpack --config webpack.dev.config.js",
-    "dev": "webpack-dev-server --config webpack.dev.config.js --open"
+    "start": "node ./serve/www.js",
+    "dev": "webpack-dev-server --config webpack.dev.config.js --open",
+    "client-build": "webpack --config webpack.client.config.js",
+    "client-watch": "webpack --config webpack.client.config.js --watch",
+    "serve-build": "webpack --config webpack.server.config.js",
+    "serve-watch": "webpack --config webpack.server.config.js --watch",
+    "serve": "nodemon ./serve/build/serve.bundle.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "dotili",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^4.4.1",
+    "nodemon": "^2.0.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.4",
+    "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
+    "@koa/router": "^9.4.0",
     "koa": "^2.13.0",
+    "koa-logger": "^3.2.1",
     "koa-static": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

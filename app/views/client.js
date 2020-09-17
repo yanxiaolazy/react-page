@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Client} from './index';
 
-ReactDOM.render(
-  <Client />,
+ReactDOM.hydrate(
+  // <React.Fragment>
+    <Client />,
+  // </React.Fragment>,
   document.getElementById('root')
 );
-
-function Client() {
-  return(
-    <>
-      <h1>Hello new webpack-dev-server</h1>
-    </>
-  )
-}
