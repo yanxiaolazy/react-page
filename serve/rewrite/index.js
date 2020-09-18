@@ -22,9 +22,9 @@ function rewriteHtml(newPath, oldPath, content) {
     if (datas.search(/id="root"\>\<\/div/) === -1) return;
 
     const newDatas = datas.replace(/id="root">/, `id="root">${content}`);
-    console.log('\r\nrewrite ---> | ', dirname(newPath));
+    console.log('\r\nrewrite --> ', dirname(newPath));
     const newP = resolve(dirname(newPath), 'server.html');
-    console.log('\r\nnew path ---> | ', newP, ' |\r\n');
+    console.log('\r\nnew path --> ', newP);
     fs.writeFileSync(newP, newDatas);  
     return;  
   }
@@ -48,7 +48,7 @@ module.exports = (newPath, oldPath) => {
 
   return async (ctx, next) => {
     const {domContent} = reactRender(ctx, next);
-    console.log('domContent ---> ', domContent);
+    console.log('domContent --> ', domContent);
     rewriteHtml(newPath, oldPath, domContent);
 
     await next();
