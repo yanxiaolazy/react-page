@@ -12,6 +12,8 @@
 * `webpack` 使用webpack所必要的
 * `webpack-cli` 使用webpack所必要的
 * `webpack-merge` 合并配置文件
+* `css-loader` 
+* `mini-css-extract-plugin` 压缩css文件
 
 ------
 
@@ -26,6 +28,10 @@
 * `nodemon` hot 模块替换
 * `webpack-node-externls`  打包时，忽略node_modules
 
+------
+
+
+
 ## 2、一些抠脚命令
 
 * `npm run test` 初始化自带，不关我事
@@ -39,6 +45,8 @@
 
 ------
 
+
+
 ## 3、随便写点
 
 `npm install --save-dev @babel/core @babel/preset-react babel-loader ` 
@@ -47,9 +55,26 @@
 
 `npm install --save-dev nodemon webpack-node-externals` 
 
+`npm install --save-dev css-loader mini-css-extract-plugin` 
+
+------
 
 
-## 4、胡诌诌
+
+## 4、issue
+
+* 关于添加css模块后`npm run serve-watch`不怎么好用问题，可在对应打包配置中的` new CleanWebpackPlugin()` 添加`{ cleanStaleWebpackAssets: false }` 选项，就可避免删除打包后的`index.html` 文件 	------ 2020/9/18
+
+------
+
+
+
+## 5、胡诌诌
 
 * 折腾了几天算是简单的搭建了一个蹩脚的打包工具，凑合用吧，万事开头难，希望后面好受一点
-* 测试路由可用
+
+* 测试路由可用 ------ 2020/9/17
+
+* 添加css静态文件 ------ 2020/9/18
+
+  

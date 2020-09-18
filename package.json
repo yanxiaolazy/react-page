@@ -6,11 +6,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./serve/www.js",
     "dev": "webpack-dev-server --config webpack.dev.config.js --open",
-    "client-build": "webpack --config webpack.client.config.js && cp ./app/dist/index.html ./serve/build/index.html && rm -rf ./app/dist/index.html",
+    "client-build": "webpack --config webpack.client.config.js",
     "client-watch": "webpack --config webpack.client.config.js --watch",
     "serve-build": "webpack --config webpack.server.config.js",
     "serve-watch": "webpack --config webpack.server.config.js --watch",
-    "serve": "nodemon ./serve/build/serve.bundle.js"
+    "serve": "nodemon ./serve/build/static.bundle.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,6 @@
     "html-webpack-plugin": "^4.4.1",
     "mini-css-extract-plugin": "^0.11.2",
     "nodemon": "^2.0.4",
-    "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
@@ -45,7 +44,7 @@
     "koa": "^2.13.0",
     "koa-logger": "^3.2.1",
     "koa-static": "^5.0.0",
-    "koa-views": "^6.3.0",
+    "mime": "^2.4.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"

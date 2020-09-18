@@ -1,15 +1,19 @@
 const path = require('path');
 const WebpackNodeExternals = require('webpack-node-externals');
 const {merge} = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const baseConfig = require('./webpack.base.config');
 
 module.exports = merge(baseConfig, {
   target: 'node',
-  entry: './serve/www.js',
+  entry: {static: './serve/www.js'},
   output: {
-    filename: 'serve.bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, './serve/build')
   },
-  externals: [WebpackNodeExternals()]
+  plugins: [
+    new HtmlWebpackPlugin({template: './app/views/index.html', title: 'css'})
+  ],
+  externals: [WebpackNodeExternals()],
 });
