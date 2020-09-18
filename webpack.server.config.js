@@ -7,7 +7,7 @@ const baseConfig = require('./webpack.base.config');
 
 module.exports = merge(baseConfig, {
   target: 'node',
-  entry: {static: './serve/www.js'},
+  entry: {server: './serve/www.js'},
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, './serve/build')
