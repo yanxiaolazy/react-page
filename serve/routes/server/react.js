@@ -5,7 +5,12 @@ const { StaticRouter } = require('react-router-dom');
 //引入react项目
 const {Routes} = require('../../../app/views/routes');
 
-module.exports =  (ctx) => {
+/**
+ * react 渲染成字符串
+ * @param {*} ctx 
+ * @param {*} next 
+ */
+module.exports =  (ctx, next) => {
   const context = {};
 
   const domContent = renderToString(
@@ -13,6 +18,6 @@ module.exports =  (ctx) => {
         <Routes />
       </StaticRouter>
   );
-  console.log('response body content: ', domContent);
+  console.log('\r\nreact render ---> ', domContent);
   return {domContent};
 }

@@ -1,7 +1,5 @@
-const Router = require('@koa/router');
+const router = require('@koa/router')();
 const server = require('./server/server');
-
-const router = new Router();
 
 module.exports = router;
 
