@@ -3,4 +3,4 @@ const server = require('./server/server');
 
 module.exports = router;
 
-router.get(/./, server);
+router.get(/./, server());
