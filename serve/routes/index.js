@@ -7,6 +7,6 @@ module.exports = router;
 
 const root = resolve('./');
 
-router.get(/./, server(root));
+router.get(/./, server());
 
-router.get('/config', renderConfig(root));
+router.get('/config', renderConfig());

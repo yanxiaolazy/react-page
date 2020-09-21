@@ -9,6 +9,8 @@ const copyHtml = require('./rewrite');
 
 const app = new Koa();
 
+app.context.root = resolve('./');
+
 app
   .use(copyHtml(resolve('./', 'serve/build/index.html'), resolve('./', 'app/dist/index.html')))
   .use(log())//打印请求日志
