@@ -3,7 +3,7 @@ const React = require('react');
 const {renderToString} = require('react-dom/server');
 const { StaticRouter } = require('react-router-dom');
 //引入react项目
-const {Routes} = require('../../../app/views/routes');
+const {Routes} = require('../../app/views/routes');
 
 /**
  * react 渲染成字符串

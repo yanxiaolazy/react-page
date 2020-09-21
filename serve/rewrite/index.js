@@ -2,7 +2,7 @@ const fs = require('fs');
 const assert = require('assert');
 const {resolve, dirname} = require('path');
 // //使用react服务端渲染
-const reactRender = require('../routes/server/react');
+const reactRender = require('../react');
 
 /**
  * 处理模板
