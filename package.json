@@ -1,7 +1,7 @@
 {
-  "name": "react-node",
+  "name": "react-page",
   "version": "2.0.0",
-  "description": "",
+  "description": "不知道写啥，抠脚就对了，如果能看就将就看，看不下去还是扔垃圾箱吧，免得影响心情",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./serve/www.js",
@@ -10,10 +10,19 @@
     "client-watch": "webpack --config webpack.client.config.js --watch",
     "serve-build": "webpack --config webpack.server.config.js",
     "serve-watch": "webpack --config webpack.server.config.js --watch",
-    "serve": "nodemon ./serve/build/serve.bundle.js"
+    "serve": "nodemon ./serve/build/server.bundle.js",
+    "production": "npm run client-build && npm run serve-build && npm run serve"
   },
-  "keywords": [],
-  "author": "dotili",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanxiaolazy/react-page.git"
+  },
+  "keywords": [
+    "react-node",
+    "react-router",
+    "webpack"
+  ],
+  "author": "yanxiaolazy",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -21,7 +30,10 @@
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.3.0",
+    "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.4.1",
+    "mini-css-extract-plugin": "^0.11.2",
     "nodemon": "^2.0.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
@@ -31,9 +43,11 @@
   },
   "dependencies": {
     "@koa/router": "^9.4.0",
+    "axios": "^0.20.0",
     "koa": "^2.13.0",
     "koa-logger": "^3.2.1",
     "koa-static": "^5.0.0",
+    "mime": "^2.4.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
