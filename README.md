@@ -82,9 +82,12 @@
 
 ## 6
 
+```
 ├─build ----> 打包文件
 ├─config ----> 放置配置数据
 ├─react ----> 对react的处理
 ├─rewrite ----> 对html模板处理
 └─routes ----> 路由
     └─server ----> 路由回调函数
+```
+
