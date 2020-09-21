@@ -1,6 +1,7 @@
 import React from 'react';
 import {Typography, Row, Col, Form, Input, Button} from 'antd';
 import {withRouter} from 'react-router-dom';
+import './index.css';
 
 export default withRouter((props) => {
   const {Title} = Typography;
@@ -20,7 +21,7 @@ export default withRouter((props) => {
   }
   return(
     <>
-      <Row align='middle' justify='center' style={{height: '100vh'}}>
+      <Row align='middle' justify='center' className='login-row'>
         <Col>
           <Typography>
             <Title level={4}>Login</Title>
