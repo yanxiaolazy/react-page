@@ -27,8 +27,8 @@ function rewriteHTML(current, domContent) {
   /**
    * 添加react render content
    */
-  if (! html.search(/\<body\>.*\<\/body>/)) return;
-  const newHTML = html.replace(/\<body\>.*\<\/body>/, `<body><div id='root'>${domContent}</div></body>`);
+  if (! html.search(/\<body\>.*\<script/)) return;
+  const newHTML = html.replace(/\<body\>.*\<script/, `<body><div id='root'>${domContent}</div><script`);
   console.log('\r\n', newHTML, '\r\n');
   /**
    * 重新写入文件
