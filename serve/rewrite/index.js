@@ -1,56 +1,63 @@
+const {resolve} = require('path');
 const fs = require('fs');
-const assert = require('assert');
-const {resolve, dirname} = require('path');
-// //使用react服务端渲染
-const reactRender = require('../react');
+const renderReact = require('../react');
 
-/**
- * 处理模板
- * @param {string} newPath 
- * @param {string} oldPath 
- * @param {string} content 
- */
-function rewriteHtml(newPath, oldPath, content) {
-  assert(newPath, 'newPath is required');
-  assert(oldPath, 'oldPath is required');
+module.exports = (current) => {
+  //删除多余文件
+  dropFile(current, ['index.html', 'server.bundle.js']);
 
-  console.log("newPath -->", newPath);
-  console.log("oldPath -->", oldPath);
-  if (!fs.existsSync(oldPath)) {
-    const datas = fs.readFileSync(newPath, 'utf-8');
-
-    if (datas.search(/id="root"\>\<\/div/) === -1) return;
-
-    const newDatas = datas.replace(/id="root">/, `id="root">${content}`);
-    console.log('\r\nrewrite --> ', dirname(newPath));
-    const newP = resolve(dirname(newPath), 'server.html');
-    console.log('\r\nnew path --> ', newP);
-    fs.writeFileSync(newP, newDatas);  
-    return;  
+  return async (ctx, next) => {
+    const domContent = renderReact(ctx);
+    rewriteHTML(current, domContent);
+    await next();
   }
+}
+
+function rewriteHTML(current, domContent) {
+  const cur = resolve(current, 'index.html');
+  let html = fs.readFileSync(cur, 'utf-8');
+
+  if (!domContent) return;
+  console.log('rewrite HTML ...');
   /**
-   * 复制模板
+   * 改变加载css,script路径
    */
-  const datas = fs.readFileSync(oldPath, 'utf-8');
-  fs.writeFileSync(newPath, datas);
-  fs.unlinkSync(oldPath);
+  if (! html.search(/\.\.\/\.\.\/app\/dist\//)) return;
+  html = html.replace(/\.\.\/\.\.\/app\/dist\//gi, '');
+  /**
+   * 添加react render content
+   */
+  if (! html.search(/\<body\>.*\<\/body>/)) return;
+  const newHTML = html.replace(/\<body\>.*\<\/body>/, `<body><div id='root'>${domContent}</div></body>`);
+  console.log('\r\n', newHTML, '\r\n');
+  /**
+   * 重新写入文件
+   */
+  fs.writeFileSync(cur, newHTML);
+  console.log('rewrite HTML end...')
+  return;
 }
 
 /**
- * 读取html模板文件中间件
- * @param {string} newPath 
- * @param {string} oldPath 
+ * 
+ * @param {string} dir 
+ * @param {string[]} opts 
  */
-module.exports = (newPath, oldPath) => {
-  assert(newPath, 'newPath is required');
-  assert(oldPath, 'oldPath is required');
-  rewriteHtml(newPath, oldPath);
+function dropFile(dir, opts=[]) {
+  let path = '';
 
-  return async (ctx, next) => {
-    const {domContent} = reactRender(ctx, next);
-    console.log('domContent --> ', domContent);
-    rewriteHtml(newPath, oldPath, domContent);
+  fs.readdir(dir, (err, files) => {
+    if (err) throw new Error(err);
 
-    await next();
-  };
+    if (files.length !== 0) {
+      files.forEach(file => {
+        path = resolve(dir, file);
+
+        if (! fs.existsSync(path)) return;
+        if (opts.find( opt => opt === file)) return;
+        console.log('dropped --- ', path);
+        fs.unlinkSync(path);
+      });
+    }
+  });
 }

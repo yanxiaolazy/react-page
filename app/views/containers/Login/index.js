@@ -1,7 +1,7 @@
 import React from 'react';
 import {Typography, Row, Col, Form, Input, Button} from 'antd';
 import {withRouter} from 'react-router-dom';
-import './index.css';
+import './index.scss';
 
 export default withRouter((props) => {
   const {Title} = Typography;

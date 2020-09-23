@@ -1,9 +1,10 @@
 const router = require('@koa/router')();
-const server = require('./server/renderHTML');
+const renderHTML = require('./server/renderHTML');
 const renderConfig = require('./server/renderConfig');
 
 module.exports = router;
+router
+  .redirect('/', '/login')
+  .get(/./, renderHTML)
 
-router.get(/./, server());
-
-router.get('/config', renderConfig());
+  .get('/config', renderConfig());

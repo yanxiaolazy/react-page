@@ -3,7 +3,7 @@ const React = require('react');
 const {renderToString} = require('react-dom/server');
 const { StaticRouter } = require('react-router-dom');
 //引入react项目
-const {Routes} = require('../../app/views/routes');
+const {Routes} = require('../../app/views');
 
 /**
  * react 渲染成字符串
@@ -12,12 +12,16 @@ const {Routes} = require('../../app/views/routes');
  */
 module.exports =  (ctx, next) => {
   const context = {};
-
+  
   const domContent = renderToString(
-      <StaticRouter location={ctx.url} context={context}>
-        <Routes />
-      </StaticRouter>
+    <StaticRouter location={ctx.url} context={context}>
+      <Routes/>
+    </StaticRouter>
   );
-  console.log('\r\nreact render ---> ', domContent);
-  return {domContent};
+  if (!domContent) return;
+  
+  console.log('React Render ------------------\r\n ', 
+                domContent, 
+                  '\r\n------------------ Render End\r\n');
+  return domContent;
 }

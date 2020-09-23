@@ -1,18 +1,20 @@
 import {Typography, Button, Menu, Row, Col } from 'antd';
 import React from 'react';
+import './index.scss';
 
 export default () => {
   return(
-    <Row style={{flexDirection: 'row'}}>
-      <Col span={10}>
-        <Typography>
+    <div className='topbar'>
+      <div className='topbar-item'>
+        <Typography className='topbar-typography'>
           <Typography.Text>React-Page</Typography.Text>
         </Typography>
-      </Col>
-      <Col span={20}>
+      </div>
+      <div className='topbar-item'>
         <Menu 
           defaultSelectedKeys={['topbar-item-1']}
           mode='horizontal'
+          className='topbar-menu'
         >
           <Menu.Item key='topbar-item-1'>
             home
@@ -21,11 +23,11 @@ export default () => {
             gallery
           </Menu.Item>
         </Menu>
-      </Col>
-      <Col span={18}>
+      </div>
+      <div className='topbar-item topbar-btns'>
         <Button type='primary'>signup</Button>
         <Button type='default'>signin</Button>
-      </Col>
-    </Row>
+      </div>
+    </div>
   )
 }
