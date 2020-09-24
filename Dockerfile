@@ -8,4 +8,4 @@ RUN npm install
 # Expose API port to the outside
 EXPOSE 3000
 # Launch application
-CMD ["npm", "production"]
+CMD ["npm", "start"]
